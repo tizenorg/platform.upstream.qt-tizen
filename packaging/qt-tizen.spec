@@ -10,9 +10,6 @@ Url:            https://gitorious.org/qt-tizen
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.gz
 
-Requires: qt5-qtdeclarative-examples
-Requires: qt5-tools
-
 %if %{with wayland}
 Requires: qtwayland
 %endif
@@ -26,12 +23,24 @@ Meta package for tizen platform.
 Used to abstract different setup.
 
 
+%package -n full
+Summary:  All Qt packages supported on Tizen.
+Requires: qt5-qtdeclarative-examples
+Requires: qt5-tools
+Requires: qt-tizen = %{version}-%{release}
+
+%description -n full
+All needed packages for tizen.
+
+
 %package -n demo
 Summary:        Specific tizen files for demos.
 BuildRequires:  make
+Requires: qt-tizen = %{version}-%{release}
 
 %description -n demo
 Add some links to launcher
+
 
 %prep
 %setup -q
