@@ -1,3 +1,6 @@
+%bcond_with wayland
+%bcond_with x
+
 Name:           qt-tizen
 Version:        0.0.1
 Release:        0
@@ -7,10 +10,27 @@ Url:            https://gitorious.org/qt-tizen
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.gz
 
-BuildRequires:  make
 Requires: qt5-qtdeclarative-examples
+Requires: qt5-tools
+
+%if %{with wayland}
+Requires: qtwayland
+%endif
+
+%if %{with x}
+Requires: qt5-plugin-platform-xcb
+%endif
 
 %description
+Meta package for tizen platform.
+Used to abstract different setup.
+
+
+%package -n demo
+Summary:        Specific tizen files for demos.
+BuildRequires:  make
+
+%description -n demo
 Add some links to launcher
 
 %prep
@@ -29,6 +49,6 @@ make %{?jobs:-j%jobs} V=1
 %postun -p /sbin/ldconfig
 
 
-%files
+%files -n demo
 %defattr(-,root,root)
 /*
