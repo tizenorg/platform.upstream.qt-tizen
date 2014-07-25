@@ -9,6 +9,8 @@ Summary:        meta package for tizen integration
 Url:            https://gitorious.org/qt-tizen
 Group:          System/Libraries
 Source:         %{name}-%{version}.tar.gz
+BuildArch:      noarch
+
 
 %if %{with wayland}
 Requires: qtwayland
@@ -23,22 +25,30 @@ Meta package for tizen platform.
 Used to abstract different setup.
 
 
-%package -n full
+%package full
 Summary:  All Qt packages supported on Tizen.
-Requires: qt5-qtdeclarative-examples
-Requires: qt5-tools
 Requires: qt-tizen = %{version}-%{release}
+Requires: qt5-plugin-imageformat-jpeg
+Requires: qt5-qtdeclarative-examples
+Requires: qt5-qtdeclarative-import-folderlistmodel
+Requires: qt5-qtdeclarative-import-multimedia
+Requires: qt5-qtdeclarative-import-particles2
+Requires: qt5-qtdeclarative-import-qtquick2plugin
+Requires: qt5-tools
+Requires: qt5-qtdeclarative-devel-tools
+BuildArch:  noarch
 
-%description -n full
+%description full
 All needed packages for tizen.
 
 
-%package -n demo
+%package demo
 Summary:        Specific tizen files for demos.
 BuildRequires:  make
 Requires: qt-tizen = %{version}-%{release}
+BuildArch:  noarch
 
-%description -n demo
+%description demo
 Add some links to launcher
 
 
@@ -46,7 +56,8 @@ Add some links to launcher
 %setup -q
 
 %build
-make %{?jobs:-j%jobs} V=1
+make %{?_smp_mflags}
+
 
 %install
 %make_install
@@ -58,6 +69,10 @@ make %{?jobs:-j%jobs} V=1
 %postun -p /sbin/ldconfig
 
 
-%files -n demo
+%files
+
+%files full
+
+%files demo
 %defattr(-,root,root)
 /*
