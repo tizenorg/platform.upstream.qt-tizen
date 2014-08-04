@@ -13,7 +13,7 @@ BuildArch:      noarch
 
 
 %if %{with wayland}
-Requires: qtwayland
+Requires: qt5-qtwayland
 %endif
 
 %if %{with x}
@@ -28,14 +28,25 @@ Used to abstract different setup.
 %package full
 Summary:  All Qt packages supported on Tizen.
 Requires: qt-tizen = %{version}-%{release}
+Requires: qt5-plugin-accessible-widgets
+Requires: qt5-plugin-imageformat-gif
+Requires: qt5-plugin-imageformat-ico
 Requires: qt5-plugin-imageformat-jpeg
+Requires: qt5-plugin-platform-minimal
+Requires: qt5-qtdeclarative-devel-tools
 Requires: qt5-qtdeclarative-examples
 Requires: qt5-qtdeclarative-import-folderlistmodel
+Requires: qt5-qtdeclarative-import-localstorageplugin
 Requires: qt5-qtdeclarative-import-multimedia
 Requires: qt5-qtdeclarative-import-particles2
 Requires: qt5-qtdeclarative-import-qtquick2plugin
+Requires: qt5-qtdeclarative-qtquick-widgets
+Requires: qt5-qtgraphicaleffects
+Requires: qt5-qtmultimedia
+Requires: qt5-qtmultimedia-plugin-audio-alsa
+Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediaplayer
+Requires: qt5-qtquickcontrols
 Requires: qt5-tools
-Requires: qt5-qtdeclarative-devel-tools
 BuildArch:  noarch
 
 %description full
@@ -56,7 +67,8 @@ Add some links to launcher
 %setup -q
 
 %build
-make %{?_smp_mflags}
+
+%__make %{?_smp_mflags}
 
 
 %install
@@ -75,4 +87,7 @@ make %{?_smp_mflags}
 
 %files demo
 %defattr(-,root,root)
-/*
+/home/*/.applications/desktop/*
+/home/*/*.qml
+/opt/share/widget_demo/*
+%{_bindir}/*.sh
