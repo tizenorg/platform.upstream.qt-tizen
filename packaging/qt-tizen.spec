@@ -28,7 +28,6 @@ Used to abstract different setup.
 %package full
 Summary:  All Qt packages supported on Tizen.
 Requires: qt-tizen = %{version}-%{release}
-Requires: qt5-plugin-accessible-widgets
 Requires: qt5-plugin-imageformat-gif
 Requires: qt5-plugin-imageformat-ico
 Requires: qt5-plugin-imageformat-jpeg
