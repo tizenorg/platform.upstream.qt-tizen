@@ -40,6 +40,9 @@ Requires: qt5-qtdeclarative-import-localstorageplugin
 Requires: qt5-qtdeclarative-import-multimedia
 Requires: qt5-qtdeclarative-import-particles2
 Requires: qt5-qtdeclarative-import-qtquick2plugin
+Requires: qt5-qtdeclarative-import-qttest
+Requires: qt5-qtdeclarative-import-sensors
+Requires: qt5-qtdeclarative-import-settings
 Requires: qt5-qtdeclarative-qtquick-widgets
 Requires: qt5-qtgraphicaleffects
 Requires: qt5-qtmultimedia
@@ -47,6 +50,7 @@ Requires: qt5-qtmultimedia-plugin-audio-alsa
 Requires: qt5-qtmultimedia-plugin-mediaservice-gstmediaplayer
 Requires: qt5-qtquickcontrols
 Requires: qt5-tools
+Requires: qt5-qttools-qtdesigner
 BuildArch:  noarch
 
 %description full
