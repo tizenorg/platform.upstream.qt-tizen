@@ -1,0 +1,11 @@
+[Unit]
+Description=Installation of pre-installed qt-demos
+ConditionPathExists=!%h/.applications/.qt-demos-installed
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/preinstall-qt-demos.sh
+
+[Install]
+WantedBy=default.target
+
