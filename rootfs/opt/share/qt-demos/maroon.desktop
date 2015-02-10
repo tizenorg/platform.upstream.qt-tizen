@@ -2,5 +2,5 @@
 Name=Maroon
 Type=Application
 Exec=qmlscene /usr/share/qt5/qt5-qtdeclarative/examples/quick/demos/maroon/maroon.qml
-Icon=/opt/share/widget_demo/maroon.png
+Icon=/opt/share/qt-demos/maroon.png
 

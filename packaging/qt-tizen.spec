@@ -76,6 +76,9 @@ Add some links to launcher
 
 %install
 %make_install
+mkdir -p %{buildroot}/%{_bindir} %{buildroot}/%{_unitdir_user}
+install preinstall-qt-demos.sh %{buildroot}/%{_bindir}
+install preinstall-qt-demos.service %{buildroot}/%{_unitdir_user}
 
 #%fdupes %{buildroot}
 
@@ -83,14 +86,20 @@ Add some links to launcher
 
 %postun -p /sbin/ldconfig
 
+%post demo
+mkdir -p %{_unitdir_user}/default.target.wants/
+ln -sf ../preinstall-qt-demos.service %{_unitdir_user}/default.target.wants/
+
 
 %files
 
 %files full
 
 %files demo
+%manifest %{name}.manifest
 %defattr(-,root,root)
-/home/*/.applications/desktop/*
-/home/*/*.qml
-/opt/share/widget_demo/*
-%{_bindir}/*.sh
+%attr(755,root,root) %{_bindir}/preinstall-qt-demos.sh
+%attr(644,root,root) %{_unitdir_user}/preinstall-qt-demos.service
+%attr(644,root,root) /opt/share/qt-demos/*
+%attr(755,root,root) %{_bindir}/launch_video_qt.sh
+
