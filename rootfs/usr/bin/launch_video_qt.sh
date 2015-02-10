@@ -1,2 +1,2 @@
 #!/bin/sh
-qmlscene /home/guest/video.qml
+qmlscene /opt/share/qt-demos/video.qml

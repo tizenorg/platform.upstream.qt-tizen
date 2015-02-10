@@ -2,5 +2,5 @@
 Name=Samegame
 Type=Application
 Exec=qmlscene /usr/share/qt5/qt5-qtdeclarative/examples/quick/demos/samegame/samegame.qml
-Icon=/opt/share/widget_demo/samegame.png
+Icon=/opt/share/qt-demos/samegame.png
 
